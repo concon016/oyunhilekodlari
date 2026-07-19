@@ -188,6 +188,33 @@ a { color: inherit; text-decoration: none; }
   margin-top: 3px;
   word-break: break-word;
 }
+
+.btn-seq {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 4px;
+}
+.btn-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+  height: 24px;
+  padding: 0 6px;
+  border-radius: 50%;
+  border: 1.5px solid;
+  font-size: 13px;
+  font-weight: 700;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  line-height: 1;
+}
+.btn-triangle { color: #16a34a; border-color: #16a34a; }
+.btn-circle   { color: #e11d48; border-color: #e11d48; }
+.btn-cross    { color: #2563eb; border-color: #2563eb; }
+.btn-square   { color: #d6249f; border-color: #d6249f; }
+.btn-dpad     { color: var(--text-soft); border-color: var(--border); background: var(--bg-alt); border-radius: 6px; }
+.btn-shoulder { color: var(--text-soft); border-color: var(--border); background: var(--bg-alt); border-radius: 6px; font-size: 10.5px; padding: 0 5px; }
 .copy-btn {
   flex-shrink: 0;
   border: 1px solid var(--border);

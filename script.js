@@ -39,6 +39,31 @@
   });
 })();
 
+// PS4/PS5 tuş dizilerini simgeye çevir
+(function () {
+  var codes = document.querySelectorAll("#panel-ps .code-row .code");
+  if (!codes.length) return;
+  var map = {
+    Triangle: { icon: "△", cls: "btn-triangle" },
+    Circle:   { icon: "○", cls: "btn-circle" },
+    X:        { icon: "✕", cls: "btn-cross" },
+    Square:   { icon: "□", cls: "btn-square" },
+    Left:     { icon: "←", cls: "btn-dpad" },
+    Right:    { icon: "→", cls: "btn-dpad" },
+    Up:       { icon: "↑", cls: "btn-dpad" },
+    Down:     { icon: "↓", cls: "btn-dpad" }
+  };
+  codes.forEach(function (el) {
+    var tokens = el.textContent.split(",").map(function (t) { return t.trim(); });
+    var html = tokens.map(function (tok) {
+      var m = map[tok];
+      if (m) return '<span class="btn-chip ' + m.cls + '" title="' + tok + '">' + m.icon + "</span>";
+      return '<span class="btn-chip btn-shoulder">' + tok + "</span>";
+    }).join("");
+    el.innerHTML = '<span class="btn-seq">' + html + "</span>";
+  });
+})();
+
 // Kopyala butonu
 (function () {
   document.querySelectorAll(".copy-btn").forEach(function (btn) {
