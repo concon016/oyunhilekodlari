@@ -248,8 +248,8 @@ a { color: inherit; text-decoration: none; }
 
 @media (max-width: 600px) {
   .hero h1 { font-size: 24px; }
-  .code-row { flex-direction: column; align-items: flex-start; }
-  .copy-btn { align-self: flex-end; }
+  .code-row { align-items: center; }
+  .copy-btn { flex-shrink: 0; padding: 6px 10px; font-size: 11px; }
 
   .game-grid {
     display: block;
