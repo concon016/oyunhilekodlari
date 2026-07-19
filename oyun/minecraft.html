@@ -41,8 +41,19 @@
 
     <section class="game-hero">
       <h1>Minecraft Hile Kodları</h1>
-      <p>Minecraft'ta "hile kodu" yerine oyun içi komut sistemi kullanılır. Java sürümünde dünya kurarken "Allow Cheats: ON" seçeneğini aç ya da mevcut bir dünyada duraklatma menüsünden "LAN'a Aç" ile etkinleştir. Bedrock sürümünde Ayarlar &gt; Oyun sekmesinden "Hileleri Etkinleştir"i aç. Komutları yazmak için sohbet ekranını aç (PC'de T ya da /, konsollarda D-pad yukarı), komutu yapıştır ve gönder.</p>
+      <p>Minecraft'ta "hile kodu" yerine oyun içi komut sistemi kullanılır. Aşağıdaki komutların tamamı PC, PS4 ve PS5'te birebir aynıdır — tek fark komutu oyuna nasıl gireceğin.</p>
     </section>
+
+    <div class="platform-tabs">
+      <button class="platform-tab-btn active" data-target="how-pc">PC (Java / Bedrock)</button>
+      <button class="platform-tab-btn" data-target="how-ps">PS4 / PS5</button>
+    </div>
+    <div class="platform-panel active" id="how-pc">
+      <p class="info-note" style="margin-top:8px;">Java sürümünde dünya kurarken "Allow Cheats: ON" seçeneğini aç, ya da açık bir dünyada Esc &gt; LAN'a Aç ile etkinleştir. Bedrock sürümünde Ayarlar &gt; Oyun &gt; "Hileleri Etkinleştir"i aç. Sohbet ekranını açmak için T ya da / tuşuna bas, komutu yapıştır, Enter'a bas.</p>
+    </div>
+    <div class="platform-panel" id="how-ps">
+      <p class="info-note" style="margin-top:8px;">Ayarlar &gt; Oyun sekmesinden "Hileleri Etkinleştir"i aç. Sohbet ekranını açmak için D-pad'de yukarı yön tuşuna bas, ekran klavyesiyle komutu yaz (ya da yapıştır), gönder tuşuna bas.</p>
+    </div>
 
     <div class="code-search">
       <input type="text" id="codeSearch" placeholder="Komut veya etki ara (örn: uçma, can, hava)" autocomplete="off">
