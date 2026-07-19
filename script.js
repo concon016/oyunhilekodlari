@@ -39,26 +39,40 @@
   });
 })();
 
-// PS4/PS5 tuş dizilerini simgeye çevir
+// PS4/PS5 tuş dizilerini kontrolcü butonu görseline çevir
 (function () {
   var codes = document.querySelectorAll("#panel-ps .code-row .code");
   if (!codes.length) return;
+
+  var CAP = "#2b2b2f";
+
+  function face(symbol) {
+    return '<svg viewBox="0 0 28 28" width="26" height="26"><circle cx="14" cy="14" r="13" fill="' + CAP + '"/>' + symbol + "</svg>";
+  }
+  function dpad(pathD) {
+    return '<svg viewBox="0 0 28 28" width="26" height="26"><rect x="1" y="1" width="26" height="26" rx="7" fill="' + CAP + '"/><path d="' + pathD + '" fill="#fff"/></svg>';
+  }
+  function shoulder(label) {
+    return '<svg viewBox="0 0 40 26" width="34" height="22"><rect x="1" y="1" width="38" height="24" rx="6" fill="' + CAP + '"/><text x="20" y="17" font-size="12" font-weight="700" fill="#fff" text-anchor="middle" font-family="Arial, sans-serif">' + label + "</text></svg>";
+  }
+
   var map = {
-    Triangle: { icon: "△", cls: "btn-triangle" },
-    Circle:   { icon: "○", cls: "btn-circle" },
-    X:        { icon: "✕", cls: "btn-cross" },
-    Square:   { icon: "□", cls: "btn-square" },
-    Left:     { icon: "←", cls: "btn-dpad" },
-    Right:    { icon: "→", cls: "btn-dpad" },
-    Up:       { icon: "↑", cls: "btn-dpad" },
-    Down:     { icon: "↓", cls: "btn-dpad" }
+    Triangle: face('<path d="M14 8 L19.6 18.2 L8.4 18.2 Z" fill="none" stroke="#22c55e" stroke-width="2" stroke-linejoin="round"/>'),
+    Circle:   face('<circle cx="14" cy="14" r="5.6" fill="none" stroke="#f43f5e" stroke-width="2"/>'),
+    X:        face('<path d="M10 10 L18 18 M18 10 L10 18" stroke="#3b82f6" stroke-width="2" stroke-linecap="round"/>'),
+    Square:   face('<rect x="9.2" y="9.2" width="9.6" height="9.6" fill="none" stroke="#ec4899" stroke-width="2"/>'),
+    Left:  dpad("M17 9 L11 14 L17 19 Z"),
+    Right: dpad("M11 9 L17 14 L11 19 Z"),
+    Up:    dpad("M9 17 L14 11 L19 17 Z"),
+    Down:  dpad("M9 11 L14 17 L19 11 Z"),
+    L1: shoulder("L1"), L2: shoulder("L2"), R1: shoulder("R1"), R2: shoulder("R2")
   };
+
   codes.forEach(function (el) {
     var tokens = el.textContent.split(",").map(function (t) { return t.trim(); });
     var html = tokens.map(function (tok) {
-      var m = map[tok];
-      if (m) return '<span class="btn-chip ' + m.cls + '" title="' + tok + '">' + m.icon + "</span>";
-      return '<span class="btn-chip btn-shoulder">' + tok + "</span>";
+      var icon = map[tok] || shoulder(tok);
+      return '<span class="btn-chip" title="' + tok + '">' + icon + "</span>";
     }).join("");
     el.innerHTML = '<span class="btn-seq">' + html + "</span>";
   });
