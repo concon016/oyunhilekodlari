@@ -4,7 +4,7 @@
   if (!input) return;
   var cards = document.querySelectorAll(".game-card");
   input.addEventListener("input", function () {
-    var q = input.value.trim().toLocaleLowerCase("tr");
+    var q = input.value.trim().toLocaleLowerCase(document.documentElement.lang || "tr");
     cards.forEach(function (card) {
       var name = card.dataset.name.toLocaleLowerCase("tr");
       card.style.display = name.indexOf(q) !== -1 ? "" : "none";
@@ -31,7 +31,7 @@
   var input = document.getElementById("codeSearch");
   if (!input) return;
   input.addEventListener("input", function () {
-    var q = input.value.trim().toLocaleLowerCase("tr");
+    var q = input.value.trim().toLocaleLowerCase(document.documentElement.lang || "tr");
     document.querySelectorAll(".code-row").forEach(function (row) {
       var text = row.dataset.search.toLocaleLowerCase("tr");
       row.classList.toggle("hidden", q.length > 0 && text.indexOf(q) === -1);
@@ -85,7 +85,7 @@
       var code = btn.dataset.code;
       navigator.clipboard.writeText(code).then(function () {
         var orig = btn.textContent;
-        btn.textContent = "Kopyalandı ✓";
+        btn.textContent = document.documentElement.lang === "en" ? "Copied ✓" : "Kopyalandı ✓";
         btn.classList.add("copied");
         setTimeout(function () {
           btn.textContent = orig;
